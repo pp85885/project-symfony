@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<div class="mt-2">
+		{# {{ dump(form) }} #}
+
+		{{ form_start(form) }}
+		<div class="form-group">
+			{{ form_label(form.title) }}
+			{{ form_widget(form.title,{attr:{'class':'form-control mb-2'}}) }}
+		</div>
+
+		<div class="form-group">
+			{{ form_label(form.content) }}
+			{{ form_widget(form.content,{attr:{'class': 'form-control mb-2'}}) }}
+		</div>
+
+		<button type="submit" class="btn btn-primary">{{ form.vars.data.id is null ? 'Created' : 'Update' }}</button>
+
+		{# {{ form_widget(form.submit) }} #}
+
+		{{ form_end(form) }}
+	</div>
+{% endblock %}

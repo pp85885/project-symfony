@@ -1,0 +1,42 @@
+<?php
+
+namespace App\Form;
+
+use App\Entity\Post;
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\{SubmitType, TextareaType, TextType};
+
+class PostType extends AbstractType
+{
+    public function buildForm(FormBuilderInterface $builder, array $options): void
+    {
+        $builder
+            ->add('title', TextType::class, [
+                'label' => 'Enter title',
+                'attr' => [
+                    'placeholder' => 'Enter the title here'
+                ]
+            ])
+            ->add('content', TextareaType::class, [
+                'label' => 'Enter Content',
+                'attr' => [
+                    'placeholder' => 'Enter the content from here'
+                ]
+            ]);
+            
+        // ->add('submit', SubmitType::class, [
+        //     'attr' => [
+        //         'class' => 'btn btn-primary'
+        //     ]
+        // ]);
+    }
+
+    public function configureOptions(OptionsResolver $resolver): void
+    {
+        $resolver->setDefaults([
+            'data_class' => Post::class,
+        ]);
+    }
+}
