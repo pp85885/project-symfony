@@ -17,6 +17,7 @@
 			<tr>
 				<th scope="col">#</th>
 				<th scope="col">Title</th>
+				<th>Image</th>
 				<th scope="col">Action</th>
 			</tr>
 		</thead>
@@ -25,6 +26,11 @@
 				<tr>
 					<th scope="row">{{ loop.index }}</th>
 					<td>{{ post.title }}</td>
+					<td>
+						{% if post.image %}
+							<img width="60" src="{{ asset('uploads/posts/' ~ post.image) }}" alt="Post Image">
+						{% endif %}
+					</td>
 					<td>
 						<a href="{{ path('edit_post',{id: post.id}) }}" class="btn btn-success">Edit</a>
 						<a href="{{ path('delete_post',{id: post.id}) }}" class="btn btn-danger">Delete</a>

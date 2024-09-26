@@ -15,6 +15,11 @@
 			{{ form_widget(form.content,{attr:{'class': 'form-control mb-2'}}) }}
 		</div>
 
+		<div class="form-group">
+			{{ form_label(form.image) }}
+			{{ form_widget(form.image,{attr:{'class': 'form-control mb-2' }}) }}
+		</div>
+
 		<button type="submit" class="btn btn-primary">{{ form.vars.data.id is null ? 'Created' : 'Update' }}</button>
 
 		{# {{ form_widget(form.submit) }} #}
