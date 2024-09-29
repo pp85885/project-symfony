@@ -10,7 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Attribute\Route;
 
-class TestController extends AbstractController
+class PostController extends AbstractController
 {
     private $em;
 
@@ -19,7 +19,7 @@ class TestController extends AbstractController
         $this->em = $em;
     }
 
-    #[Route('/', name: 'all_posts')]
+    #[Route('/all-posts', name: 'all_posts')]
     public function index()
     {
         $posts = $this->em->getRepository(Post::class)->findAll();
@@ -77,6 +77,24 @@ class TestController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $imageFile = $form->get('image')->getData();
+
+            if ($imageFile) {
+                $newFileName = uniqid() . '.' . $imageFile->guessExtension();
+
+                try {
+                    $imageFile->move(
+                        $this->getParameter('upload_dir'),
+                        $newFileName
+                    );
+                } catch (Exception $e) {
+                    return $e;
+                }
+
+                $post->setImage($newFileName);
+            }
+
             $this->em->persist($post);
             $this->em->flush();
 
