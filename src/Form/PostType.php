@@ -16,6 +16,7 @@ class PostType extends AbstractType
         $builder
             ->add('title', TextType::class, [
                 'label' => 'Enter title',
+                'required' => true,
                 'attr' => [
                     'placeholder' => 'Enter the title here'
                 ]
@@ -40,13 +41,8 @@ class PostType extends AbstractType
                         'mimeTypesMessage' => 'Please upload a valid image file (JPEG/PNG)',
                     ])
                 ]
-            ]);
-
-        // ->add('submit', SubmitType::class, [
-        //     'attr' => [
-        //         'class' => 'btn btn-primary'
-        //     ]
-        // ]);
+            ])
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void

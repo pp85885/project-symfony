@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
 use App\Repository\PostRepository;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -14,6 +15,9 @@ class Post
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    /**
+    * @Assert\NotBlank(message="Title is required.")
+    */
     private ?string $title = null;
 
     #[ORM\Column(length: 255)]

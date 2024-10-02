@@ -46,7 +46,7 @@ class PostController extends AbstractController
 
                 try {
                     $imageFile->move(
-                        $this->getParameter('upload_dir'),
+                        $this->getParameter('upload_dir_posts'),
                         $newFileName
                     );
                 } catch (Exception $e) {
@@ -85,7 +85,7 @@ class PostController extends AbstractController
 
                 try {
                     $imageFile->move(
-                        $this->getParameter('upload_dir'),
+                        $this->getParameter('upload_dir_posts'),
                         $newFileName
                     );
                 } catch (Exception $e) {

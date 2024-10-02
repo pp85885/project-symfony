@@ -1,0 +1,7 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<h2 class="m-2">{{ form.vars.value.id ? "Update Product" : "Create Product" }}</h2>
+
+	{{ form(form, {'method': 'POST'}) }}
+{% endblock %}
